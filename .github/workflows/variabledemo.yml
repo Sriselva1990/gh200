@@ -1,0 +1,16 @@
+name: Env var demo
+
+on:
+  workflow_dispatch:
+
+env:
+  MY_VARIABLE: selva variable     # <-- Defining custom environment variable
+
+jobs:
+  show-variable:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print environment variable
+        run: |
+          echo "The value of MY_VARIABLE is: $MY_VARIABLE"
