@@ -1,0 +1,22 @@
+name: PR Conditional Demo
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  run-conditional:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Always runs
+        run: echo "This runs for both PUSH & PR"
+
+      - name: Run only on PR
+        if: github.event_name == 'pull_request'
+        run: echo "✔ This step runs ONLY for Pull Requests"
+
+      - name: Run only on PUSH
+        if: github.event_name == 'push'
+        run: echo "✔ This step runs ONLY on push to main"
