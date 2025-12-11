@@ -1,0 +1,13 @@
+name: API Secret Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-secret:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.MY_API }}
+    steps:
+      - name: Print masked secret
+        run: echo "Token is: $MY_API"
