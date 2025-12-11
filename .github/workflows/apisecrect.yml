@@ -1,0 +1,18 @@
+name: API Secret Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-secret:
+    runs-on: ubuntu-latest
+    env:
+      API_KEY: ${{ secrets.MY_API }}
+    steps:
+      - name: Step 1 - Print masked secret
+        run: echo "Token is: $MY_API"
+
+      - name: Step 2 - Use secret in API call (example)
+        run: |
+          curl -H "Authorization: Bearer $MY_API" \
+          https://example.com/api/data
